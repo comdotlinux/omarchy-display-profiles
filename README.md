@@ -28,7 +28,7 @@ entry with `comdotlinux.display-profiles`.
 
 **Requirements:** `nwg-displays` (with `nwg-displays-apply`) and `jq` — both
 ship with Omarchy. If `nwg-displays` is missing, the section shows a
-`sudo pacman -S nwg-displays` hint instead of profile buttons.
+an install hint instead of profile buttons.
 
 ## Keybind (optional)
 

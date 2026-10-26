@@ -102,7 +102,7 @@ Panel {
       }
       if (String(root.profilesListOutput).split("\n")[0] === "MISSING") {
         root.profileNames = []
-        root.profileMessage = "nwg-displays is not installed (sudo pacman -S nwg-displays)"
+        root.profileMessage = "nwg-displays is not installed — install the nwg-displays package to use profiles"
         return
       }
       var names = []
