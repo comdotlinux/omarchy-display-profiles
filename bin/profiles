@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# List nwg-displays layout profiles as "flag<TAB>name" lines (flag 1 = active),
+# or apply one with `profiles --apply <name>`. Used by the monitor-profiles
+# plugin's Menu.qml. Mirrors omarchy/extensions/monitor-layout-pick semantics.
+set -euo pipefail
+
+if [[ ${1:-} == --apply ]]; then
+  exec nwg-displays-apply -p "${2:?profile name required}"
+fi
+
+# List mode. Without the nwg-displays package there is nothing to drive and
+# nothing writes profiles, so tell the menu to show an install hint.
+if ! command -v nwg-displays >/dev/null 2>&1; then
+  printf 'MISSING\n'
+  exit 0
+fi
+
+dir="${XDG_CONFIG_HOME:-$HOME/.config}/nwg-displays"
+active=$(jq -r '.active_profile // ""' "$dir/active_profile.json" 2>/dev/null || true)
+
+for f in "$dir"/profiles/*.json; do
+  [[ -e $f ]] || continue
+  name=${f##*/}
+  name=${name%.json}
+  if [[ $name == "$active" ]]; then
+    printf '1\t%s\n' "$name"
+  else
+    printf '0\t%s\n' "$name"
+  fi
+done

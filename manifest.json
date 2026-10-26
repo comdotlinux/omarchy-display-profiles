@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "comdotlinux.display-profiles",
+  "name": "Display Profiles",
+  "version": "1.0.0",
+  "author": "Guruprasad Kulkarni",
+  "description": "Adds a DISPLAY PROFILES section to the Omarchy Display panel: pick and apply nwg-displays layout profiles.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Display Profiles",
+    "description": "Display panel with nwg-displays profile switching",
+    "category": "System",
+    "allowMultiple": false
+  }
+}
